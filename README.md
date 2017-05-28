@@ -1,1 +1,1 @@
-Automated music-playing app built with React
+Automated podcast-playing app built with React
