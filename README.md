@@ -1,1 +1,1 @@
-Automated music-playing app built with React and Redux
+Automated music-playing app built with React
