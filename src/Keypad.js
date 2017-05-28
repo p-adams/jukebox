@@ -1,11 +1,17 @@
-import React, {Componenet} from 'react'
-
-class Keypad extends Componenet {
+import React, {Component} from 'react'
+import RaisedButton from 'material-ui/RaisedButton'
+import {Card} from 'material-ui/Card'
+class Keypad extends Component {
+    handleTouch() {
+        alert("meow")
+    }
     render() {
         return (
-            <div>
-                Keypad
-            </div>
-        )
+            <Card>
+                <RaisedButton onTouchTap={this.handleTouch} label="Default"/>
+            </Card>
+        )   
     }
 }
+
+export default Keypad
