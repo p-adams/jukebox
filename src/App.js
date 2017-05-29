@@ -31,7 +31,7 @@ class App extends Component {
             </Row>
             <Row>
               <Col span={8}><LeftPane playlist={this.state.leftPlaylist}/></Col>
-              <Col span={4}><Keypad/></Col>
+              <Col span={8}><Keypad/></Col>
               <Col span={8}><RightPane playlist={this.state.rightPlaylist}/></Col>
             </Row>
           </div>
