@@ -11,13 +11,13 @@ const RightPane = props => {
                             pc2={i.pc2}/>
         })
     }
-        return (
-            <Row>
-                <Col md={6}>
-                   {renderPlaylist()}
-                </Col>
-            </Row>
-        )
+    return (
+        <Row>
+            <Col md={6}>
+                {renderPlaylist()}
+            </Col>
+        </Row>
+    )
 }
 
 
