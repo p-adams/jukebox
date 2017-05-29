@@ -1,13 +1,24 @@
-import React, {Component} from 'react'
-
-class RightPane extends Component {
-    render() {
-        return (
-            <div>
-                RightPane
-            </div>
-        )
+import React from 'react'
+import {Row, Col} from 'antd'
+import Playlist from './Playlist'
+const RightPane = props => {
+    const renderPlaylist = function() {
+        return props.playlist.map((i, index) => {
+            return <Playlist
+                            key={index}
+                            pc1={i.pc1}
+                            s={i.s}
+                            pc2={i.pc2}/>
+        })
     }
+        return (
+            <Row>
+                <Col md={6}>
+                   {renderPlaylist()}
+                </Col>
+            </Row>
+        )
 }
+
 
 export default RightPane
