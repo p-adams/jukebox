@@ -1,9 +1,10 @@
-const PodcastDetails = props => {
+import React from 'react'
+const Player = props => {
     return(
         <div>
-            PodcastDetails
+            Player
         </div>
     )
 }
 
-export default PodcastDetails
+export default Player

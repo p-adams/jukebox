@@ -1,31 +1,39 @@
 import React, { Component } from 'react';
+import './App.css';
 import Keypad from './Keypad'
 import LeftPane from './LeftPane'
 import RightPane from './RightPane'
-import './App.css';
+import Player from './Player'
+import {Row, Col} from 'antd'
+
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
             leftPlaylist: [
-                {pc1: "#A", s: "john smith", pc2: "#B"},
-                {pc1: "#C", s: "mary smith", pc2: "#D"},
-                {pc1: "#E", s: "dan lee", pc2: "#F"},
+                {podcast1: "#A", speaker: "john smith", podcast2: "#B"},
+                {podcast1: "#C", speaker: "mary smith", podcast2: "#D"},
+                {podcast1: "#E", speaker: "dan lee", podcast2: "#F"},
             ],
             rightPlaylist: [
-                {pc1: "#G", s: "david morgan", pc2: "#H"},
-                {pc1: "#I", s: "stanley hudson", pc2: "#J"},
-                {pc1: "#K", s: "stan ford", pc2: "#L"},
+                {podcast1: "#G", speaker: "david morgan", podcast2: "#H"},
+                {podcast1: "#I", speaker: "stanley hudson", podcast2: "#J"},
+                {podcast1: "#K", speaker: "stan ford", podcast2: "#L"},
             ]
         }
   }
   render() {
     return (
           <div>
-            <LeftPane playlist={this.state.leftPlaylist}/>
-            <Keypad/>
-            <RightPane playlist={this.state.rightPlaylist}/>
+            <Row>
+              <Col span={12}><Player/></Col>
+            </Row>
+            <Row>
+              <Col span={8}><LeftPane playlist={this.state.leftPlaylist}/></Col>
+              <Col span={4}><Keypad/></Col>
+              <Col span={8}><RightPane playlist={this.state.rightPlaylist}/></Col>
+            </Row>
           </div>
     );
   }

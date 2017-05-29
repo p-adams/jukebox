@@ -6,9 +6,9 @@ const RightPane = props => {
         return props.playlist.map((i, index) => {
             return <Playlist
                             key={index}
-                            pc1={i.pc1}
-                            s={i.s}
-                            pc2={i.pc2}/>
+                            podcast1={i.podcast1}
+                            speaker={i.speaker}
+                            podcast2={i.podcast2}/>
         })
     }
     return (
