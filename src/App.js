@@ -5,6 +5,8 @@ import LeftPane from './LeftPane'
 import RightPane from './RightPane'
 import Player from './Player'
 import {Row, Col} from 'antd'
+import {Layout} from 'antd'
+const {Header, Content, Footer} = Layout
 
 
 class App extends Component {
@@ -26,14 +28,25 @@ class App extends Component {
   render() {
     return (
           <div>
-            <Row>
-              <Col span={12}><Player/></Col>
-            </Row>
-            <Row>
-              <Col span={8}><LeftPane playlist={this.state.leftPlaylist}/></Col>
-              <Col span={8}><Keypad/></Col>
-              <Col span={8}><RightPane playlist={this.state.rightPlaylist}/></Col>
-            </Row>
+            <Layout>
+              <Header style={{width: '100%'}}>
+                <h1 style={{color: 'white'}}>jukebox</h1>
+              </Header>
+              <Content style={{border: '3px solid purple'}}>
+              <Row>
+                <Col span={8}><LeftPane playlist={this.state.leftPlaylist}/></Col>
+                <Col span={8}><Keypad/></Col>
+                <Col span={8}><RightPane playlist={this.state.rightPlaylist}/></Col>
+              </Row>
+              </Content>
+              <Footer>
+                <Row type="flex" justify="center">
+                  <Col span={24}>
+                    <Player/>
+                  </Col>
+                </Row>
+              </Footer>
+            </Layout>
           </div>
     );
   }

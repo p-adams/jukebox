@@ -5,7 +5,7 @@ const ButtonGroup = Button.Group
 class Keypad extends Component {
     render() {
         return (
-            <div>
+            <div style={{border: '1px solid green', marginTop: '20px'}}>
                 <Row type="flex" justify="center">
                 <ButtonGroup>
                     <Button>A</Button>

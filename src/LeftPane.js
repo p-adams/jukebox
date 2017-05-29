@@ -12,11 +12,13 @@ const LeftPane = props => {
         })
     }
     return (
-        <Row>
-            <Col md={6}>
-                {renderPlaylist()}
-            </Col>
-        </Row>
+        <div style={{border: '1px solid red'}}>
+            <Row>
+                <Col md={6}>
+                    {renderPlaylist()}
+                </Col>
+            </Row>
+        </div>
     )
 }
 
