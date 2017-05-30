@@ -11,30 +11,32 @@ class Keypad extends Component {
         console.log(`selected: ${sel}`)
     }
     render() {
+        let handleLetter = this.props.onHandleLetterSel
+        let handleNumber = this.props.onHandleNumberSel
         return (
             <div style={{marginTop: '25%'}}>
                 <Row type="flex" justify="center">
                 <ButtonGroup>
-                    <Button size="large" onClick={() => this.handlePlaylistSelection('A')}>A</Button>
-                    <Button size="large" onClick={() => this.handlePlaylistSelection(1)}>1</Button>
+                    <Button size="large" onClick={() => handleLetter('A')}>A</Button>
+                    <Button size="large" onClick={() => handleNumber(1)}>1</Button>
                 </ButtonGroup>
                 </Row>
                 <Row type="flex" justify="center">
                 <ButtonGroup>
-                    <Button size="large" onClick={() => this.handlePlaylistSelection('B')}>B</Button>
-                    <Button size="large" onClick={() => this.handlePlaylistSelection(2)}>2</Button>
+                    <Button size="large" onClick={() => handleLetter('B')}>B</Button>
+                    <Button size="large" onClick={() => handleNumber(2)}>2</Button>
                 </ButtonGroup>
                 </Row>
                 <Row type="flex" justify="center">
                 <ButtonGroup>
-                    <Button size="large" onClick={() => this.handlePlaylistSelection('C')}>C</Button>
-                    <Button size="large" onClick={() => this.handlePlaylistSelection(3)}>3</Button>
+                    <Button size="large" onClick={() => handleLetter('C')}>C</Button>
+                    <Button size="large" onClick={() => handleNumber(3)}>3</Button>
                 </ButtonGroup>
                 </Row>
                 <Row type="flex" justify="center">
                 <ButtonGroup>
-                    <Button size="large" onClick={() => this.handlePlaylistSelection('D')}>D</Button>
-                    <Button size="large" onClick={() => this.handlePlaylistSelection(4)}>4</Button>
+                    <Button size="large" onClick={() => handleLetter('D')}>D</Button>
+                    <Button size="large" onClick={() => handleNumber(4)}>4</Button>
                 </ButtonGroup>
                 </Row>
                 <Row type="flex" justify="center">
@@ -42,7 +44,7 @@ class Keypad extends Component {
                 <Button size="large">
                     <Icon type="pause-circle" />Pause
                 </Button>
-                <Button size="large">
+                <Button size="large" onClick={this.props.onHandleSel}>
                     Play<Icon type="play-circle" />
                 </Button>
                 </ButtonGroup>
