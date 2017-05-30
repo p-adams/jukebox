@@ -14,8 +14,8 @@ class App extends Component {
   constructor() {
     super()
     this.handlePlay = this.handlePlay.bind(this)
-    this.updateSelection = this.updateSelection.bind(this)
-    this.handleSelection = this.handleSelection.bind(this)
+    this.handleLetterSelection = this.handleLetterSelection.bind(this)
+    this.handleNumberSelection = this.handleNumberSelection.bind(this)
     this.state = {
             leftPlaylist: [
                 {podcast1: "A1", speaker: "john smith", podcast2: "A2", title1: "foo", title2: "bar", src1: "/.mp3", src2: "/.mp3"},
@@ -42,11 +42,16 @@ class App extends Component {
     console.log('foo')
     this.state.podcast.play()
   }
-  updateSelection(letter, number) {
-    this.setState({letter: letter, number: number})
+  handleNumberSelection(n) {
+    this.setState({number: n})
+
+  }
+  handleLetterSelection(l) {
+    this.setState({letter: l})
   }
   handleSelection() {
-
+    // get match = this.state.letter + this.state.number.toString()
+    // map over playlist to find match
   }
   render() {
     return (
