@@ -9,6 +9,8 @@ const LeftPane = props => {
                             podcast1={i.podcast1}
                             speaker={i.speaker}
                             podcast2={i.podcast2}
+                            title1={i.title1}
+                            title2={i.title2}
                     />
         })
     }

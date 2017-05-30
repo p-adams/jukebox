@@ -5,17 +5,13 @@ const PodcastDisplay = props => {
     return (
        <Card style={{padding: '10px', marginBottom: '5px', width: 300}}>
            <Row>
-            <Col></Col>
-            <Col>
-                <p>{props.podcast1}</p>
-            </Col>
+            <Col><p>{props.podcast1}: {props.title1} </p></Col>
            </Row>
            <Row>
                <p>{props.speaker}</p>
            </Row>
            <Row>
-            <Col></Col>
-            <Col><p>{props.podcast2}</p></Col>
+            <Col><p>{props.podcast2}: {props.title2}</p></Col>
            </Row>
         </Card>
     )
