@@ -11,6 +11,8 @@ const RightPane = props => {
                             podcast2={i.podcast2}
                             title1={i.title1}
                             title2={i.title2}
+                            src1={i.src1}
+                            src2={i.src2}
                     />
         })
     }
