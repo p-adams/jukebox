@@ -14,6 +14,8 @@ class App extends Component {
   constructor() {
     super()
     this.handlePlay = this.handlePlay.bind(this)
+    this.updateSelection = this.updateSelection.bind(this)
+    this.handleSelection = this.handleSelection.bind(this)
     this.state = {
             leftPlaylist: [
                 {podcast1: "A1", speaker: "john smith", podcast2: "A2", title1: "foo", title2: "bar", src1: "/.mp3", src2: "/.mp3"},
@@ -27,7 +29,9 @@ class App extends Component {
                 {podcast1: "C3", speaker: "stan ford", podcast2: "C4", title1: "foo", title2: "bar", src1: "/.mp3", src2: "/.mp3"},
                 {podcast1: "D3", speaker: "dan lee", podcast2: "D4", title1: "foo", title2: "bar", src1: "/.mp3", src2: "/.mp3"},
             ],
-            podcast: ''
+            podcast: '',
+            letter: '',
+            number: 0
         }
   }
   componentDidMount() {
@@ -37,6 +41,12 @@ class App extends Component {
   handlePlay() {
     console.log('foo')
     this.state.podcast.play()
+  }
+  updateSelection(letter, number) {
+    this.setState({letter: letter, number: number})
+  }
+  handleSelection() {
+
   }
   render() {
     return (
