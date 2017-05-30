@@ -5,37 +5,37 @@ const ButtonGroup = Button.Group
 class Keypad extends Component {
     render() {
         return (
-            <div style={{border: '1px solid green', marginTop: '20px'}}>
+            <div style={{marginTop: '25%'}}>
                 <Row type="flex" justify="center">
                 <ButtonGroup>
-                    <Button>A</Button>
-                    <Button>1</Button>
+                    <Button size="large">A</Button>
+                    <Button size="large">1</Button>
                 </ButtonGroup>
                 </Row>
                 <Row type="flex" justify="center">
                 <ButtonGroup>
-                    <Button>B</Button>
-                    <Button>2</Button>
+                    <Button size="large">B</Button>
+                    <Button size="large">2</Button>
                 </ButtonGroup>
                 </Row>
                 <Row type="flex" justify="center">
                 <ButtonGroup>
-                    <Button>C</Button>
-                    <Button>3</Button>
+                    <Button size="large">C</Button>
+                    <Button size="large">3</Button>
                 </ButtonGroup>
                 </Row>
                 <Row type="flex" justify="center">
                 <ButtonGroup>
-                    <Button>D</Button>
-                    <Button>4</Button>
+                    <Button size="large">D</Button>
+                    <Button size="large">4</Button>
                 </ButtonGroup>
                 </Row>
                 <Row type="flex" justify="center">
                 <ButtonGroup>
-                <Button>
+                <Button size="large">
                     <Icon type="pause-circle" />Pause
                 </Button>
-                <Button>
+                <Button size="large">
                     Play<Icon type="play-circle" />
                 </Button>
                 </ButtonGroup>

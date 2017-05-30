@@ -8,13 +8,14 @@ const RightPane = props => {
                             key={index}
                             podcast1={i.podcast1}
                             speaker={i.speaker}
-                            podcast2={i.podcast2}/>
+                            podcast2={i.podcast2}
+                    />
         })
     }
     return (
-        <div style={{border: '1px solid red'}}>
+        <div style={{background: '#ECECEC', padding: '30px'}}>
             <Row>
-                <Col md={6}>
+                <Col style={{marginLeft: '15%' }} md={8}>
                     {renderPlaylist()}
                 </Col>
             </Row>

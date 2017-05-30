@@ -3,7 +3,7 @@ import {Row, Col} from 'antd'
 import {Card} from 'antd'
 const Player = props => {
     return(
-        <div style={{border: '1px solid blue'}}>
+        <div>
             <Row>
                 <Col span={9}></Col>
                 <Col span={6}>

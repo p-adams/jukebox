@@ -28,18 +28,18 @@ class App extends Component {
   render() {
     return (
           <div>
-            <Layout>
+            <Layout className="layout">
               <Header style={{width: '100%'}}>
                 <h1 style={{color: 'white'}}>jukebox</h1>
               </Header>
-              <Content style={{border: '3px solid purple'}}>
+              <Content style={{width: '100%'}}>
               <Row>
                 <Col span={8}><LeftPane playlist={this.state.leftPlaylist}/></Col>
                 <Col span={8}><Keypad/></Col>
                 <Col span={8}><RightPane playlist={this.state.rightPlaylist}/></Col>
               </Row>
               </Content>
-              <Footer>
+              <Footer style={{backgroundColor: '#404040'}}>
                 <Row type="flex" justify="center">
                   <Col span={24}>
                     <Player/>
