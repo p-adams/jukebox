@@ -6,12 +6,14 @@ import RightPane from './RightPane'
 import Player from './Player'
 import {Row, Col} from 'antd'
 import {Layout} from 'antd'
+import wolf from './playlist/wolf.mp3'
 const {Header, Content, Footer} = Layout
 
 
 class App extends Component {
   constructor() {
     super()
+    this.handlePlay = this.handlePlay.bind(this)
     this.state = {
             leftPlaylist: [
                 {podcast1: "A1", speaker: "john smith", podcast2: "A2", title1: "foo", title2: "bar", src1: "/.mp3", src2: "/.mp3"},
@@ -24,12 +26,25 @@ class App extends Component {
                 {podcast1: "B3", speaker: "stanley hudson", podcast2: "B4", title1: "foo", title2: "bar", src1: "/.mp3", src2: "/.mp3"},
                 {podcast1: "C3", speaker: "stan ford", podcast2: "C4", title1: "foo", title2: "bar", src1: "/.mp3", src2: "/.mp3"},
                 {podcast1: "D3", speaker: "dan lee", podcast2: "D4", title1: "foo", title2: "bar", src1: "/.mp3", src2: "/.mp3"},
-            ]
+            ],
+            podcast: ''
         }
+  }
+  componentDidMount() {
+    console.log(this.getAudio)
+    this.setState({podcast: this.getAudio})
+  }
+  handlePlay() {
+    console.log('foo')
+    this.state.podcast.play()
   }
   render() {
     return (
           <div>
+            <audio ref={audio => this.getAudio = audio}>
+              <source src={wolf}></source>
+            </audio>
+            <button onClick={this.handlePlay}>test play</button>
             <Layout className="layout">
               <Header style={{width: '100%'}}>
                 <h1 style={{color: 'white'}}>jukebox</h1>
