@@ -35,8 +35,13 @@ class App extends Component {
             src2:'',
             hasSelected: false,
             letter: '',
+            file: null,
             number: 0
         }
+  }
+  componentDidMount() {
+    const file = new Audio()
+    this.setState({file: file})
   }
   handleNumberSelection(n) {
     this.setState({number: n})
@@ -48,6 +53,14 @@ class App extends Component {
   handlePlay() {
     console.log('src1:', this.state.src1)
     console.log('src2:', this.state.src2)
+    let source = this.state.src1 !== '' ? this.state.src1 :this.state.src2
+    console.log (`SOURCE: ${source}`)
+    let audio = this.state.file
+    audio.src = source
+    console.log(`audio source: ${audio.src}`)
+    this.setState({file: audio})
+    this.state.file.load()
+    this.state.file.play()
     this.setState({src1: ''})
     this.setState({src2: ''})
   }
@@ -61,7 +74,6 @@ class App extends Component {
       if(sel === el.podcast2) this.setState({src2: el.src2})
     })
     this.setState({hasSelected: true})
-    
   }
   render() {
     return (
