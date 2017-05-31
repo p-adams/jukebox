@@ -40,15 +40,27 @@ class Keypad extends Component {
                 </ButtonGroup>
                 </Row>
                 <Row type="flex" justify="center">
-                <ButtonGroup>
-                <Button size="large">
-                    <Icon type="pause-circle" />Pause
-                </Button>
-                <Button size="large" onClick={this.props.onHandleSel}>
-                    Play<Icon type="play-circle" />
-                </Button>
-                </ButtonGroup>
+                    <ButtonGroup>
+                        <Button size="large"
+                                onClick={this.props.onHandleSel}
+                        >
+                                Select
+                        </Button>
+                    </ButtonGroup>
                 </Row>
+                {this.props.hasSelected ? 
+                    <Row type="flex" justify="center">
+                        <ButtonGroup>
+                            <Button size="large">
+                                <Icon type="pause-circle" />Pause
+                            </Button>
+                            <Button size="large" onClick={this.props.onHandlePlay}>
+                                Play<Icon type="play-circle" />
+                            </Button>
+                        </ButtonGroup>
+                    </Row>
+                : null
+                }
             </div>
         )   
     }

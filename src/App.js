@@ -13,7 +13,7 @@ const {Header, Content, Footer} = Layout
 class App extends Component {
   constructor() {
     super()
-    this.playIt = this.playIt.bind(this)
+    this.handlePlay = this.handlePlay.bind(this)
     this.handleSelection = this.handleSelection.bind(this)
     this.handleLetterSelection = this.handleLetterSelection.bind(this)
     this.handleNumberSelection = this.handleNumberSelection.bind(this)
@@ -31,7 +31,9 @@ class App extends Component {
                 {podcast1: "D3", speaker: "dan lee", podcast2: "D4", title1: "foo", title2: "bar", src1: "/.mp3", src2: "/.mp3"},
             ],
             playerDetails: [],
-            playlistSource: '',
+            src1: '',
+            src2:'',
+            hasSelected: false,
             letter: '',
             number: 0
         }
@@ -43,37 +45,27 @@ class App extends Component {
   handleLetterSelection(l) {
     this.setState({letter: l})
   }
-  playIt() {
-    let playlist = document.getElementById("playlist")
-    let source = document.getElementById("src")
-    console.log(this.state.playlistSource)
-    source.src = this.state.playlistSource
-    playlist.load()
-    playlist.play()
+  handlePlay() {
+    console.log('src1:', this.state.src1)
+    console.log('src2:', this.state.src2)
+    this.setState({src1: ''})
+    this.setState({src2: ''})
   }
   handleSelection() {
-    let selectedTrack = this.state.letter + this.state.number.toString()
+    let sel = this.state.letter + this.state.number.toString()
     let pl = this.state.leftPlaylist.concat(this.state.rightPlaylist)
-    pl.forEach((el, index) => {
-      if(selectedTrack === el.podcast1) {
-          this.setState({playlistSource: el.src1})
-          console.log(`source1: ${this.state.playlistSource}`)
-      }
-      if(selectedTrack === el.podcast2) {
-          this.setState({playistSource: el.src2})
-          console.log(`source2: ${this.state.playlistSource}`)
-      }
+    pl.forEach(el => {
+      if(sel === el.podcast1) this.setState({src1: el.src1})
     })
+    pl.forEach(el => {
+      if(sel === el.podcast2) this.setState({src2: el.src2})
+    })
+    this.setState({hasSelected: true})
+    
   }
   render() {
     return (
           <div>
-            <button onClick={this.playIt}>play it</button>
-            <audio id="playlist">
-              <source id="src" type="audio/mp3"></source>
-              Your browser does not support the audio format.
-            </audio>
-            
             <Layout className="layout">
               <Header style={{width: '100%'}}>
                 <h1 style={{color: 'white'}}>jukebox</h1>
@@ -81,15 +73,15 @@ class App extends Component {
               <Content style={{width: '100%'}}>
               <Row>
                 <Col span={8}>
-                  <LeftPane playlist={this.state.leftPlaylist}
-                            handleSource={this.state.source}
-                  />
+                  <LeftPane playlist={this.state.leftPlaylist}/>
                 </Col>
                 <Col span={8}>
                   <Keypad
                     onHandleLetterSel={this.handleLetterSelection}
                     onHandleNumberSel={this.handleNumberSelection}
                     onHandleSel={this.handleSelection}
+                    hasSelected={this.state.hasSelected}
+                    onHandlePlay={this.handlePlay}
                     />
                 </Col>
                 <Col span={8}><RightPane playlist={this.state.rightPlaylist}/></Col>
