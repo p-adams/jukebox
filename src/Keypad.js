@@ -48,13 +48,12 @@ class Keypad extends Component {
                         </Button>
                     </ButtonGroup>
                 </Row>
-                {this.props.hasSelected ? 
+                {this.props.hasSelected && this.props.isPlaying ? 
                     <Row type="flex" justify="center">
                         <ButtonGroup>
-                            <Button size="large">
-                                <Icon type="pause-circle" />Pause
-                            </Button>
-                            <Button size="large" onClick={this.props.onHandlePlay}>
+                            <Button size="large"
+                                    onClick={this.props.onHandlePlay}>
+
                                 Play<Icon type="play-circle" />
                             </Button>
                         </ButtonGroup>

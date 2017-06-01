@@ -5,12 +5,13 @@ const Player = props => {
     return(
         <div>
             <Row>
-                <Col span={9}></Col>
-                <Col span={6}>
-                    <Card title="Podcast player" style={{width: 300}}>
-                        <p>Speaker</p>
-                        <p>Duration</p>
-                        <p>URL</p>
+                <Col span={8}></Col>
+                <Col span={9}>
+                    <Card title="Podcast player" style={{width: 400}}>
+                        <p>Speaker: {props.speaker}</p>
+                        <p>Podcast title: {props.track}</p>
+                        <p>Duration: {props.duration}</p>
+                        <p>URL: {props.url}</p>
                     </Card>
                 </Col>
                 <Col span={9}></Col>

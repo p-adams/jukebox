@@ -30,12 +30,16 @@ class App extends Component {
                 {podcast1: "C3", speaker: "stan ford", podcast2: "C4", title1: "foo", title2: "bar", src1: "/.mp3", src2: "/.mp3"},
                 {podcast1: "D3", speaker: "dan lee", podcast2: "D4", title1: "foo", title2: "bar", src1: "/.mp3", src2: "/.mp3"},
             ],
-            playerDetails: [],
+            speaker: '',
+            track: '',
+            duration: '',
+            url: '',
+            file: null,
             src1: '',
             src2:'',
             hasSelected: false,
+            isPlaying: false,
             letter: '',
-            file: null,
             number: 0
         }
   }
@@ -44,11 +48,10 @@ class App extends Component {
     this.setState({file: file})
   }
   handleNumberSelection(n) {
-    this.setState({number: n})
-
+    this.setState({number: n, isPlaying: false})
   }
   handleLetterSelection(l) {
-    this.setState({letter: l})
+    this.setState({letter: l, isPlaying: false})
   }
   handlePlay() {
     console.log('src1:', this.state.src1)
@@ -58,22 +61,31 @@ class App extends Component {
     let audio = this.state.file
     audio.src = source
     console.log(`audio source: ${audio.src}`)
-    this.setState({file: audio})
+    audio.addEventListener('loadeddata', () => {
+    console.log("Playing " + audio.src + ", for: " + audio.duration + "seconds. from: " + audio.currentSrc);
+    this.setState({file: audio, duration: audio.duration, url: audio.src})
+    //audio.play(); 
+    });
     this.state.file.load()
     this.state.file.play()
-    this.setState({src1: ''})
-    this.setState({src2: ''})
+    console.log(this.state.file)
+    this.setState({
+      src1: '', src2: ''})
   }
   handleSelection() {
     let sel = this.state.letter + this.state.number.toString()
     let pl = this.state.leftPlaylist.concat(this.state.rightPlaylist)
     pl.forEach(el => {
-      if(sel === el.podcast1) this.setState({src1: el.src1})
+      if(sel === el.podcast1) {
+        this.setState({src1: el.src1, speaker: el.speaker, track: el.podcast1})
+      }
     })
     pl.forEach(el => {
-      if(sel === el.podcast2) this.setState({src2: el.src2})
+      if(sel === el.podcast2) {
+        this.setState({src2: el.src2, speaker: el.speaker, track: el.podcast2})
+      }
     })
-    this.setState({hasSelected: true})
+    this.setState({hasSelected: true, isPlaying: true})
   }
   render() {
     return (
@@ -93,6 +105,7 @@ class App extends Component {
                     onHandleNumberSel={this.handleNumberSelection}
                     onHandleSel={this.handleSelection}
                     hasSelected={this.state.hasSelected}
+                    isPlaying={this.state.isPlaying}
                     onHandlePlay={this.handlePlay}
                     />
                 </Col>
@@ -102,7 +115,11 @@ class App extends Component {
               <Footer style={{backgroundColor: '#404040'}}>
                 <Row type="flex" justify="center">
                   <Col span={24}>
-                    <Player/>
+                    <Player speaker={this.state.speaker}
+                            track={this.state.track}
+                            duration={this.state.duration}
+                            url={this.state.url}
+                    />
                   </Col>
                 </Row>
               </Footer>
